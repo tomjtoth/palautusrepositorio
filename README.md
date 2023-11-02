@@ -1,3 +1,3 @@
 # ohtu
 
-[ohtuvarasto](../ohtuvarasto/)
+[ohtuvarasto](https://github.com/tomjtoth/ohtuvarasto/)

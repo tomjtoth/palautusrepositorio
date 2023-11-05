@@ -17,12 +17,8 @@ class ProjectReader:
         return Project(
             obj["name"],
             obj["description"],
-            [
-                dep[0] for dep in
-                obj["dependencies"].items()
-            ],
-            [
-                dep[0] for dep in
-                obj["group"]["dev"]["dependencies"].items()
-            ]
+            obj["license"],
+            obj["authors"],
+            obj["dependencies"].keys(),
+            obj["group"]["dev"]["dependencies"].keys()
         )

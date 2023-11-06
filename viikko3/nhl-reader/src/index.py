@@ -1,37 +1,15 @@
-from textwrap import dedent
-import requests
-from player import Player
-
-
-def filter_by_nationality(players: list, nat: str):
-
-    print(
-        f"Players from {nat}\n"
-
-        # only python 3.12 allows that linefeed within the f-string, I <3 ~~Python~~ Rust, JS, HTML, CSS, SQL
-        + "\n".join([
-
-            str(player) for player in
-
-            sorted(
-                filter(
-                    lambda elem: elem.nationality == nat,
-                    players
-                ),
-                key=lambda pla: pla.goals + pla.assists,
-                reverse=True
-            )
-        ])
-    )
+from player_reader import PlayerReader
+from player_stats import PlayerStats
 
 
 def main():
     url = "https://studies.cs.helsinki.fi/nhlstats/2022-23/players"
-    response = requests.get(url).json()
+    reader = PlayerReader(url)
+    stats = PlayerStats(reader)
+    players = stats.top_scorers_by_nationality("FIN")
 
-    players = [Player(pla) for pla in response]
-
-    filter_by_nationality(players, "FIN")
+    for player in players:
+        print(player)
 
 
 if __name__ == "__main__":

@@ -13,9 +13,13 @@ def filter_by_nationality(players: list, nat: str):
 
             str(player) for player in
 
-            filter(
-                lambda elem: elem.nationality == nat,
-                players
+            sorted(
+                filter(
+                    lambda elem: elem.nationality == nat,
+                    players
+                ),
+                key=lambda pla: pla.goals + pla.assists,
+                reverse=True
             )
         ])
     )

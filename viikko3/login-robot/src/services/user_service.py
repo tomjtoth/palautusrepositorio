@@ -1,4 +1,14 @@
+import re
 from entities.user import User
+
+
+rex = {
+    # on oltava merkeistä a-z koostuva vähintään 3 merkin pituinen merkkijono
+    'uname': re.compile(r"^[a-z]{3,}$"),
+
+    # on oltava pituudeltaan vähintään 8 merkkiä ja se ei saa koostua pelkästään kirjaimista
+    'passw': re.compile(r"^(?![a-zA-Z]{8,}$).{8,}$")
+}
 
 
 class UserInputError(Exception):
@@ -38,3 +48,10 @@ class UserService:
             raise UserInputError("Username and password are required")
 
         # toteuta loput tarkastukset tänne ja nosta virhe virhetilanteissa
+        if not rex['uname'].match(username):
+            raise UserInputError(
+                "Username complexity requirements unsatisfied")
+
+        if not rex['passw'].match(password):
+            raise UserInputError(
+                "Password complexity requirements unsatisfied")

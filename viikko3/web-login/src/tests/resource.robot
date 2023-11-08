@@ -13,6 +13,7 @@ ${REGISTER_URL}     http://${SERVER}/register
 
 *** Keywords ***
 Open And Configure Browser
+    Reset Application
     ${options}    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
     Call Method    ${options}    add_argument    --headless
     Open Browser    browser=chrome    options=${options}
@@ -29,6 +30,9 @@ Main Page Should Be Open
 
 Go To Login Page
     Go To    ${LOGIN_URL}
+
+Go To Register Page
+    Go To    ${REGISTER_URL}
 
 Go To Main Page
     Go To    ${HOME_URL}

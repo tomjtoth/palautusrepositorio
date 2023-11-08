@@ -36,3 +36,8 @@ Go To Register Page
 
 Go To Main Page
     Go To    ${HOME_URL}
+
+Login Should Fail With Message
+    [Arguments]    ${message}
+    Login Page Should Be Open
+    Page Should Contain    ${message}

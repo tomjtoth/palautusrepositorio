@@ -1,2 +1,6 @@
 __pycache__
 .coverage
+report.html
+output.xml
+log.html
+interactive_console_output.xml

@@ -29,4 +29,6 @@ jobs:
           cd viikko3/web-login
           poetry install
       - name: Run robot tests
-        run: bash run_robot_tests.sh
+        run: |
+          cd viikko3/web-login
+          bash run_robot_tests.sh

@@ -5,3 +5,5 @@ output.xml
 log.html
 interactive_console_output.xml
 selenium-screenshot-*.png
+.vscode
+

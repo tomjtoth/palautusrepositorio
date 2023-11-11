@@ -155,3 +155,26 @@ class TestKauppa(unittest.TestCase):
         # varmistetaan, että metodia tilisiirto on kutsuttu
         self.pankki_mock.tilisiirto.assert_called_with(
             "pekka", 42, "12345", "33333-44455", 5)
+
+    def test_aloita_asiointi_nollaa_edellisen_ostoksen_tiedot(self):
+
+        # käynnistetään yllä testin vielä kerran
+        self.test_tilisiirto_kutsutaan_oikeilla_argumenteilla_kun_ostetaan_2_eri_tuotetta_joista_1_loppu()
+
+        # tehdään ostokset
+        self.kauppa.aloita_asiointi()
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.lisaa_koriin(1)
+        self.kauppa.tilimaksu("pekka", "12345")
+
+        self.pankki_mock.tilisiirto.assert_called_with(
+            "pekka", 42, "12345", "33333-44455", 10)
+
+    def test_kauppaa_pyytaa_uusi_viitenumero_jokaiselle_ostokselle(self):
+
+        # käynnistetään yllä testin vielä kerran, joka kutsuu viitegeneraattorin kerran
+        # myös käynnistää toisen testin, joka kanssa kutsuu viitegeneraattorin kerran
+        self.test_aloita_asiointi_nollaa_edellisen_ostoksen_tiedot()
+
+        # eli tässä 1+1 == 2
+        self.assertEqual(self.viitegeneraattori_mock.uusi.call_count, 2)

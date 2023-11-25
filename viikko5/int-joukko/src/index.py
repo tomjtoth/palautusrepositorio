@@ -1,4 +1,3 @@
-import unittest
 from int_joukko import IntJoukko
 
 

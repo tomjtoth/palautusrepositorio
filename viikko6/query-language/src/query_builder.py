@@ -1,4 +1,4 @@
-from matchers import All, PlaysIn, HasFewerThan, HasAtLeast, And
+from matchers import All, PlaysIn, HasFewerThan, HasAtLeast, And, Or
 
 
 class QueryBuilder:
@@ -16,3 +16,6 @@ class QueryBuilder:
 
     def build(self):
         return self._query
+
+    def one_of(self, *matchers):
+        return QueryBuilder(Or(*matchers))

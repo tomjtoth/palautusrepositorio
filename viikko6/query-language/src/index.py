@@ -29,6 +29,15 @@ def main():
         HasAtLeast(70, "assists")
     )
 
+    matcher = And(
+        HasAtLeast(70, "points"),
+        Or(
+            PlaysIn("NYR"),
+            PlaysIn("FLA"),
+            PlaysIn("BOS")
+        )
+    )
+
     for player in stats.matches(matcher):
         print(player)
 

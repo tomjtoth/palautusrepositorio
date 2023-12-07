@@ -42,9 +42,6 @@ class Not:
         return not self._crit.test(player)
 
 
-class HasFewerThan:
-    def __init__(self, value, attr):
-        self._tester = HasAtLeast(value, attr)
-
+class HasFewerThan(HasAtLeast):
     def test(self, player):
-        return not self._tester.test(player)
+        return not super().test(player)

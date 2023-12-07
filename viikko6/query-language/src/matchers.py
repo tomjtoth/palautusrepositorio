@@ -10,6 +10,14 @@ class And:
         return True
 
 
+class Or(And):
+    def test(self, player):
+        return next(
+            (True for x in self._matchers if x.test(player)),
+            False
+        )
+
+
 class PlaysIn:
     def __init__(self, team):
         self._team = team

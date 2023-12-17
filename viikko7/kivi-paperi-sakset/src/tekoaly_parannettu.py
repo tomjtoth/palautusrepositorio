@@ -1,6 +1,6 @@
 # "Muistava tekoäly"
 class TekoalyParannettu:
-    def __init__(self, muistin_koko):
+    def __init__(self, muistin_koko=10):
         self._muisti = [None] * muistin_koko
         self._vapaa_muisti_indeksi = 0
 

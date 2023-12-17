@@ -19,10 +19,7 @@ class Tuomari:
 
     # sisäinen metodi, jolla tarkastetaan tuliko tasapeli
     def _tasapeli(self, eka, toka):
-        if eka == toka:
-            return True
-
-        return False
+        return eka == toka
 
     # sisäinen metodi joka tarkastaa voittaako eka pelaaja tokan
     def _eka_voittaa(self, eka, toka):

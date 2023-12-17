@@ -15,7 +15,7 @@ class Tuomari:
             self.tokan_pisteet = self.tokan_pisteet + 1
 
     def __str__(self):
-        return f"Pelitilanne: {self.ekan_pisteet} - {self.tokan_pisteet}\nTasapelit: {self.tasapelit}"
+        return f"\n\tPelitilanne: {self.ekan_pisteet} - {self.tokan_pisteet}\n\tTasapelit: {self.tasapelit}\n"
 
     # sisäinen metodi, jolla tarkastetaan tuliko tasapeli
     def _tasapeli(self, eka, toka):
